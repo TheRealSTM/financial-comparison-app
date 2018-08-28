@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title> {{ title }} - FinComp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 </head>
 <body>
-    <div>FinComp: <a href = "/index">Home</a></div>
-    <hr>
-    {% block content %} {% endblock %}
+    {% include 'Includes/_navbar.html' %}
+     <div class="container">
+         {% include 'includes/_messages.html' %}
+         {% block content %}{% endblock %}
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"> </script>
 </body>
 </html>

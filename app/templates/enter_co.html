@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+   <h1>Enter Two Companies to Compare: </h1>
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form action="" method="POST" novalidate>
+      {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ render_field(form.company_a, class_="form-control") }}
+    </div>
+    <div class="form-group">
+      {{ render_field(form.company_b, class_="form-control") }}
+    </div>
+    <p><input class="btn btn-primary" type="submit" value="Submit">
+  </form>
+{% endblock %}

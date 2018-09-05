@@ -18,6 +18,8 @@ def route():
         close_compA = getCompanyClose(comp[0])
         close_compB = getCompanyClose(comp[1])
         graph = graphStockData(close_compA, close_compB)
-        return redirect(url_for('index'))
+        return render_template('test.html', url=graph)
     return render_template('enter_co.html', title="Company Entry", form=form)
+
+
 

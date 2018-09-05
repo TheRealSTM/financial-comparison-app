@@ -5,6 +5,7 @@ from matplotlib import style
 import pandas as pd
 pd.core.common.is_list_like = pd.api.types.is_list_like
 import pandas_datareader.data as web
+import io, urllib, base64
 
 def getCompanyClose(co):
     # start = (dt.datetime.now() - dt.timedelta(days=1*365)).date()
@@ -24,7 +25,10 @@ def graphStockData(comp_A_close, comp_B_close):
     plt.ylabel("Daily Closing Stock Price")
     plt.title("FB vs. MSFT Closing Stock Price")
     plt.legend()
-    plt.show()
-    return plt
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    plot_data = urllib.parse.quote(base64.b64encode(img.read()).decode())
+    return plot_data
 
 

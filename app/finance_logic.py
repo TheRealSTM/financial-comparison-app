@@ -18,12 +18,13 @@ def getCompanyClose(co):
     close = close.fillna(method='ffill')
     return close
 
-def graphStockData(comp_A_close, comp_B_close):
-    plt.plot(comp_A_close.index, comp_A_close, label='MSFT')
-    plt.plot(comp_B_close.index, comp_B_close, label='FB')
+def graphStockData(comp_A_close, comp_B_close, comp):
+    plt.gcf().clear()
+    plt.plot(comp_A_close.index, comp_A_close, label=comp[0])
+    plt.plot(comp_B_close.index, comp_B_close, label=comp[1])
     plt.xlabel("Date")
     plt.ylabel("Daily Closing Stock Price")
-    plt.title("FB vs. MSFT Closing Stock Price")
+    plt.title("{} vs. {} Closing Stock Price".format(comp[0], comp[1]))
     plt.legend()
     img = io.BytesIO()
     plt.savefig(img, format='png')

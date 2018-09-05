@@ -17,8 +17,8 @@ def route():
         comp = [form.company_a.data, form.company_b.data]
         close_compA = getCompanyClose(comp[0])
         close_compB = getCompanyClose(comp[1])
-        graph = graphStockData(close_compA, close_compB)
-        return render_template('test.html', url=graph)
+        graph = graphStockData(close_compA, close_compB, comp)
+        return render_template('test.html', title="Closing Price", url=graph)
     return render_template('enter_co.html', title="Company Entry", form=form)
 
 
